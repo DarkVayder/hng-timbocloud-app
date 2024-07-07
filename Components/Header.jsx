@@ -4,7 +4,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className='relative bg-blue-950'>
+    <div className='relative bg-custom-blue'>
       <div className='relative'>
         <Image src={assets.cover} layout='responsive' objectFit='cover' alt='Cover Image' />
         <div className='absolute left-4 md:left-9 bottom-[-50px]'>
