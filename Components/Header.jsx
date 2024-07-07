@@ -1,26 +1,33 @@
-import { assets } from '@/Assets/assets'
-import Image from 'next/image'
-import React from 'react'
-import { RxAvatar } from "react-icons/rx";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { assets } from '@/Assets/assets';
+import Image from 'next/image';
+import React from 'react';
 
 const Header = () => {
   return (
-    <div className='py-5 px-5 md:px-12 lg:px-28 bg-blue-950'>
-      <div className='flex justify-between items-center'>
-        <Image src={assets.Timbulogo1} width={180} height={50} alt='Timbo Logo' className='w-[130px] sm:w-auto' />
-
-        <div className='flex items-center space-x-4'>
-          <MdOutlineShoppingCart className='text-white w-6 h-6 cursor-pointer' />
-          <div className='relative flex items-center'>
-            <RxAvatar className='text-white w-6 h-6 cursor-pointer' />
-            <RiArrowDropDownLine className='text-white w-6 h-6 cursor-pointer' />
+    <div className='relative bg-blue-950'>
+      <div className='relative'>
+        <Image src={assets.cover} layout='responsive' objectFit='cover' alt='Cover Image' />
+        <div className='absolute left-4 md:left-9 bottom-[-50px]'>
+          
+          <div className='hidden md:block'>
+            <Image src={assets.HNGlogo} width={180} height={75} alt='HNG Logo' />
+          </div>
+          <div className='block md:hidden'>
+            <Image src={assets.HNGlogo} width={100} height={40} alt='HNG Logo' />
           </div>
         </div>
       </div>
-    </div>
-  )
-}
 
-export default Header
+      <div className='py-20 px-5 md:px-9 lg:px-25 text-white'>
+        <div className='absolute left-9 max-w-4xl mx-auto'>
+          <h1 className='text-3xl md:text-2xl lg:text-3xl font-bold mb-[4] text-left'>HNG Shop</h1>
+          <p className='text-base md:text-sm leading-relaxed mb-[-4] text-left'>
+            Equipping tech talents with perseverance, grit, and skills to succeed</p>
+          <p className='text-base md:text-sm leading-relaxed text-left'>in their tech careers.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
