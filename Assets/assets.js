@@ -33,7 +33,7 @@ export const timbu_data = [
         id: 1,
         title: 'HNG: 7 rules of life',
         price: 12.99,
-        description:'This book wad written to educate and inspire up and coming techies on the reality and harsh truth that comes with surviving in the tech industry',
+        description:'This book was written to educate and inspire up and coming techies on the reality and harsh truth that comes with surviving in the tech industry',
         image: assets.item
     },
     {

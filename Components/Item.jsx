@@ -1,8 +1,8 @@
-`use client`;
+'use client';
 import Image from 'next/image';
 import React from 'react';
-import { assets } from "@/Assets/assets";
 import Link from 'next/link';
+import { assets } from '@/Assets/assets';
 
 const Item = ({ id, title, image, price }) => {
   return (
@@ -31,6 +31,6 @@ const Item = ({ id, title, image, price }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Item;
