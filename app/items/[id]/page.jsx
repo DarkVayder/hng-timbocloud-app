@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from 'react';
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import { RxAvatar } from 'react-icons/rx';
 
 const ItemPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -42,6 +44,12 @@ const ItemPage = ({ params }) => {
               <Image src={assets.Timbulogo1} width={75} alt='Logo' className='w-[130px] sm:w-auto' />
             </div>
           </Link>
+          <div className='flex items-center space-x-4 relative'>
+            <MdOutlineShoppingCart className='text-white w-6 h-6 cursor-pointer' />
+            <div className='relative flex items-center'>
+              <RxAvatar className='text-white w-6 h-6 cursor-pointer' />
+            </div>
+          </div>
         </div>
         
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-12'>
