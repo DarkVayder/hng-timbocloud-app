@@ -1,3 +1,4 @@
+`use client`
 import Navbar from "@/Components/Navbar";
 import Header from "@/Components/Header";
 import ItemList from "@/Components/ItemList";
