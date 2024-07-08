@@ -81,11 +81,11 @@ const ItemPage = ({ params }) => {
               <div className='mt-8'>
                 <h2 className='text-xl font-semibold mb-2'>Customer Reviews</h2>
                 <div className='bg-gray-700 p-4 rounded-lg mb-4'>
-                  <p className='font-bold mb-2'>Pops</p>
+                  <p className='font-bold mb-2'>Samuel</p>
                   <p className='text-sm'>Great product! Highly recommend.</p>
                 </div>
                 <div className='bg-gray-700 p-4 rounded-lg mb-4'>
-                  <p className='font-bold mb-2'>Samuel</p>
+                  <p className='font-bold mb-2'>Pops</p>
                   <p className='text-sm'>Good value for money.</p>
                 </div>
               </div>
