@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { assets } from "@/Assets/assets";
 import Footer from '@/Components/Footer';
-import Navbar from '@/Components/Navbar';
+import Navbar from '@/Components/navbar';
 
 const Summary = () => {
   const router = useRouter();

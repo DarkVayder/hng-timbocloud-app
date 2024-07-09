@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { CiTrash } from "react-icons/ci";
 import Footer from '@/Components/Footer';
-import Navbar from '@/Components/Navbar';
+import Navbar from '@/Components/navbar';
 
 const Cart = () => {
   const router = useRouter();

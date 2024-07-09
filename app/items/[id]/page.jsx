@@ -4,7 +4,7 @@ import { assets, timbu_data } from "@/Assets/assets";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/Components/Footer";
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/Components/navbar";
 import { useEffect, useState } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { RxAvatar } from 'react-icons/rx';

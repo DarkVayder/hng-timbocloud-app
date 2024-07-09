@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/Context/CartContext';
 
-const Navbar = () => {
+const navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
   const { cartCount } = useCart();
@@ -29,19 +29,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className='py-3 px-4 md:px-12 lg:px-28 bg-custom-blue'>
-      <div className='grid grid-cols-2 md:grid-cols-3 gap-4 items-center'>
-        <div>
-          <Image
-            src={assets.Timbulogo1}
-            width={180}
-            height={50}
-            alt='Timbo Logo'
-            className='w-[100px] sm:w-[130px] md:w-auto'
-            priority={true}
-          />
-        </div>
-        <div className='flex justify-end md:justify-center items-center space-x-4'>
+    <div className='py-3 px-4 md:px-12 lg:px-28 bg-custom-blue flex'>
+      <div className='flex justify-between items-center w-full'>
+        <Image
+          src={assets.Timbulogo1}
+          width={180}
+          height={50}
+          alt='Timbo Logo'
+          className='w-[100px] sm:w-[130px] md:w-auto'
+          priority={true}
+        />
+        <div className='flex items-center space-x-4 relative'>
           <Link href='/cart'>
             <div className='relative cursor-pointer p-1 bg-white rounded-full flex items-center hover:bg-blue-500 transition-colors duration-300'>
               <MdOutlineShoppingCart className='text-black w-6 h-6 md:w-8 md:h-8' />
@@ -76,4 +74,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default navbar;
