@@ -1,4 +1,5 @@
 'use client';
+
 import { assets, timbu_data } from "@/Assets/assets";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +8,8 @@ import Navbar from "@/components/Navbar";
 import { useEffect, useState } from 'react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { RxAvatar } from 'react-icons/rx';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { CiStar } from "react-icons/ci";
 
 const ItemPage = ({ params }) => {
@@ -79,7 +81,7 @@ const ItemPage = ({ params }) => {
       <Navbar />
       <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
-        <a href='/' className='text-blue-500 hover:underline'>Home</a> {'>'} <span>items</span>
+          <a href='/' className='text-blue-500 hover:underline'>Home</a> {'>'} <span>items</span>
         </nav>
         <h1 className='text-3xl font-bold text-white mb-8'>Item</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-12'>
@@ -162,8 +164,8 @@ const ItemPage = ({ params }) => {
           </div>
         </div>
       </div>
-    
       <Footer className='self-end' />
+      <ToastContainer />
     </div>
   );
 };
