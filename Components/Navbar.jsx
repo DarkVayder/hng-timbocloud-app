@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/Context/CartContext';
 
-const navbar = () => {
+const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
   const { cartCount } = useCart();
@@ -74,4 +74,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar;
