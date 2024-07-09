@@ -1,8 +1,8 @@
-'use client';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import { FaOpencart } from "react-icons/fa"; 
 import { assets } from '@/Assets/assets';
 
 const Item = ({ id, title, image, price }) => {
@@ -34,14 +34,12 @@ const Item = ({ id, title, image, price }) => {
         <h2 className='text-xl text-white font-bold mt-2'>{title}</h2>
         <div className='flex justify-between items-center mt-4'>
           <p className='text-lg text-white font-bold'>${price}</p>
-          <div className='flex items-center'>
-            <button 
-              onClick={addToCart} 
-              className='px-4 py-2 bg-white rounded-full cursor-pointer flex items-center shadow-md hover:bg-gray-200 transition duration-300'
-            >
-              <p className='text-black font-semibold mr-2'>Add to Cart</p>
-            </button>
-          </div>
+          <button 
+            onClick={addToCart} 
+            className='px-4 py-2 bg-white rounded-full cursor-pointer flex items-center shadow-md hover:bg-gray-200 transition duration-300'
+          >
+            <FaOpencart className='text-black text-xl' />
+          </button>
         </div>
       </div>
     </div>

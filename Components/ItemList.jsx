@@ -7,14 +7,12 @@ import { ToastContainer } from 'react-toastify';
 
 const ItemList = () => {
   const [showMore, setShowMore] = useState(false);
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     setShowMore(false);
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-    setCartCount(count);
+    updateCartCount();
   }, []);
 
   const updateCartCount = () => {

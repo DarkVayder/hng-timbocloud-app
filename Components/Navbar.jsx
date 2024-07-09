@@ -7,7 +7,7 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
 
-const Header = () => {
+const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
 
@@ -58,4 +58,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;
