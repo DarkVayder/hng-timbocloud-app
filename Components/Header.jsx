@@ -1,29 +1,8 @@
 'use client';
 import { assets } from '@/Assets/assets';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
-import { RxAvatar } from 'react-icons/rx';
-import { RiArrowDropDownLine } from 'react-icons/ri';
-import { MdOutlineShoppingCart } from 'react-icons/md';
 
 const Header = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-
-  useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-    setCartCount(count);
-  }, []);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const closeDropdown = () => {
-    setDropdownOpen(false);
-  };
-
   return (
     <div className='relative bg-custom-blue'>
       <div className='relative'>

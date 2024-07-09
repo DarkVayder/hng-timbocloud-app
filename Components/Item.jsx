@@ -6,19 +6,6 @@ import { FaOpencart } from "react-icons/fa";
 import { assets } from '@/Assets/assets';
 
 const Item = ({ id, title, image, price }) => {
-  const addToCart = () => {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const existingItem = cartItems.find(item => item.id === id);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cartItems.push({ id, title, image, price, quantity: 1 });
-    }
-
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    toast.success(`${title} added to cart!`);
-  };
 
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
