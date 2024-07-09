@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        trispace: ['Trispace', 'sans-serif'],
+      },
       colors: {
         'custom-blue': '#0A0E28',
       },
