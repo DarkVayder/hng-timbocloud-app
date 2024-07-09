@@ -2,6 +2,7 @@ import { Trispace } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CartProvider } from "@/Context/CartContext";
 
 const trispace = Trispace({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
@@ -14,8 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={trispace.className}>
-        <ToastContainer />
-        {children}
+        <CartProvider>
+          <ToastContainer />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
