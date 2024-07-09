@@ -40,7 +40,7 @@ const Navbar = () => {
         />
         <div className='flex items-center space-x-4 relative'>
           <Link href='/cart'>
-            <div className='relative cursor-pointer p-1 bg-white rounded-full flex items-center'>
+            <div className='relative cursor-pointer p-1 bg-white rounded-full flex items-center hover:bg-blue-500'>
               <MdOutlineShoppingCart className='text-black w-6 h-6 md:w-8 md:h-8' />
               <span className='text-black ml-2 text-sm md:text-base'>Cart</span>
               {cartCount > 0 && (
