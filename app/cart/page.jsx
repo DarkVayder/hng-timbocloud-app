@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { CiTrash } from "react-icons/ci";
-import Navbar from '@/components/Navbar'; 
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 const Cart = () => {
   const router = useRouter();
@@ -101,15 +101,15 @@ const Cart = () => {
             )}
           </div>
           <div className='bg-gray-800 p-6 rounded-lg text-white'>
-            <h2 className='text-xl font-bold mb-4'>Your Order</h2>
+            <h2 className='text-xl font-bold mb-4'>Order Summary</h2>
             <p className='mb-2'>Subtotal: ${calculateSubtotal()}</p>
-            <p className='mb-2'>Discount: $0.00</p>
+            <p className='mb-2 text-green-500'>Discount: $0.00</p>
             <p className='mb-2'>Tax: ${(calculateSubtotal() * 0.07).toFixed(2)}</p>
             <hr className='my-4' />
             <p className='text-lg font-bold'>Total: ${calculateTotal()}</p>
             <button 
               onClick={handleCheckout} 
-              className='w-full mt-4 bg-white text-blue-600 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300'
+              className='w-full mt-4 bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300'
             >
               Checkout
             </button>

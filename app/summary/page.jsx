@@ -5,9 +5,8 @@ import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { assets } from "@/Assets/assets";
-import OrderSummary from '@/components/OrderSummary';
-import Navbar from '@/components/Navbar'; 
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 const Summary = () => {
   const router = useRouter();
@@ -113,7 +112,7 @@ const Summary = () => {
               </div>
               <div className='mt-4'>
                 <p>Subtotal: ${getTotalPrice()}</p>
-                <p>Discount: $0.00</p>
+                <p className='text-green-500'>Discount: $0.00</p>
                 <p>Tax: ${(getTotalPrice() * 0.07).toFixed(2)}</p>
                 <hr className='my-4' />
                 <p className='text-xl font-bold'>Total: ${(parseFloat(getTotalPrice()) + parseFloat(getTotalPrice() * 0.07)).toFixed(2)}</p>
