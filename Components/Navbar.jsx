@@ -37,10 +37,11 @@ const Navbar = () => {
           height={50}
           alt='Timbo Logo'
           className='w-[100px] sm:w-[130px] md:w-auto'
+          priority={true}
         />
         <div className='flex items-center space-x-4 relative'>
           <Link href='/cart'>
-            <div className='relative cursor-pointer p-1 bg-white rounded-full flex items-center hover:bg-blue-500'>
+            <div className='relative cursor-pointer p-1 bg-white rounded-full flex items-center hover:bg-blue-500 transition-colors duration-300'>
               <MdOutlineShoppingCart className='text-black w-6 h-6 md:w-8 md:h-8' />
               <span className='text-black ml-2 text-sm md:text-base'>Cart</span>
               {cartCount > 0 && (
@@ -59,7 +60,7 @@ const Navbar = () => {
             {dropdownOpen && (
               <div className='absolute right-0 mt-8 w-40 md:w-48 bg-white rounded-lg shadow-lg py-2 z-10'>
                 <p
-                  className='text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer'
+                  className='text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-colors duration-300'
                   onClick={handleSignOut}
                 >
                   Sign Out
