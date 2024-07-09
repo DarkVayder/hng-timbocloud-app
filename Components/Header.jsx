@@ -1,29 +1,54 @@
+'use client';
 import { assets } from '@/Assets/assets';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { RxAvatar } from 'react-icons/rx';
+import { RiArrowDropDownLine } from 'react-icons/ri';
+import { MdOutlineShoppingCart } from 'react-icons/md';
 
 const Header = () => {
-  return (
-    <div className='relative bg-custom-blue'>
-      <div className='relative'>
-        <Image src={assets.cover} layout='responsive' objectFit='cover' alt='Cover Image' />
-        <div className='absolute left-4 md:left-9 bottom-[-50px]'>
-          
-          <div className='hidden md:block'>
-            <Image src={assets.HNGlogo} width={180} height={75} alt='HNG Logo' />
-          </div>
-          <div className='block md:hidden'>
-            <Image src={assets.HNGlogo} width={100} height={40} alt='HNG Logo' />
-          </div>
-        </div>
-      </div>
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
-      <div className='py-20 px-5 md:px-9 lg:px-25 text-white'>
-        <div className='absolute left-9 max-w-4xl mx-auto'>
-          <h1 className='text-3xl md:text-2xl lg:text-3xl font-bold mb-[4] text-left'>HNG BookStore</h1>
-          <p className='text-base md:text-sm leading-relaxed mb-[-4] text-left'>
-            Equipping tech talents with perseverance, grit, and skills to succeed</p>
-          <p className='text-base md:text-sm leading-relaxed text-left'>in their tech careers.</p>
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(count);
+  }, []);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setDropdownOpen(false);
+  };
+
+  return (
+    <div className='py-5 px-5 md:px-12 lg:px-28 bg-custom-blue'>
+      <div className='flex justify-between items-center'>
+        <Image src={assets.Timbulogo1} width={180} height={50} alt='Timbo Logo' className='w-[130px] sm:w-auto' />
+        <div className='flex items-center space-x-4 relative'>
+          <div className='relative'>
+            <MdOutlineShoppingCart className='text-white w-6 h-6 cursor-pointer' />
+            {cartCount > 0 && (
+              <span className='absolute top-0 right-0 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center'>
+                {cartCount}
+              </span>
+            )}
+          </div>
+          <div className='relative flex items-center'>
+            <RxAvatar className='text-white w-6 h-6 cursor-pointer' />
+            <RiArrowDropDownLine
+              className='text-white w-6 h-6 cursor-pointer'
+              onClick={toggleDropdown}
+            />
+            {dropdownOpen && (
+              <div className='absolute right-0 mt-8 w-48 bg-white rounded-lg shadow-lg py-2 z-10' onClick={closeDropdown}>
+                <p className='text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer'>Sign Out</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

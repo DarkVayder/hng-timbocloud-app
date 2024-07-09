@@ -3,24 +3,35 @@ import { timbu_data } from '@/Assets/assets';
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Item from './Item';
+import { ToastContainer } from 'react-toastify';
 
 const ItemList = () => {
   const [showMore, setShowMore] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     setShowMore(false);
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(count);
   }, []);
+
+  const updateCartCount = () => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(count);
+  };
 
   const itemsToShow = isMobile ? (showMore ? timbu_data : timbu_data.slice(0, 4)) : timbu_data;
 
   return (
     <div className='bg-custom-blue'>
+      <ToastContainer />
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-12'>
-      <h1 className='text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-8 drop-shadow-md text-left'>
-  Explore Our Wide Range of Books
-</h1>
-
+        <h1 className='text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-8 drop-shadow-md text-left'>
+          Explore Our Wide Range of Books
+        </h1>
         <div className='grid grid-cols-2 sm:grid-cols-4 gap-6'>
           {itemsToShow.map((item) => (
             <Item
@@ -29,6 +40,7 @@ const ItemList = () => {
               title={item.title}
               price={item.price}
               image={item.image}
+              updateCartCount={updateCartCount}
             />
           ))}
         </div>
