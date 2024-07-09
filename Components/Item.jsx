@@ -20,6 +20,20 @@ const Item = ({ id, title, image, price }) => {
     toast.success(`${title} added to cart!`);
   };
 
+  const addToCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const existingItem = cartItems.find(item => item.id === id);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cartItems.push({ id, title, image, price, quantity: 1 });
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    toast.success(`${title} added to cart!`);
+  };
+
   return (
     <div className='max-w-full sm:max-w-[330px] bg-inherit border border-black hover:shadow-[-7px_7px_0px_#000000] rounded-lg overflow-hidden'>
       <Link href={`/items/${id}`} passHref>

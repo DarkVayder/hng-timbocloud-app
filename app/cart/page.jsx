@@ -26,7 +26,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    router.push('/summary/pages.jsx');
+    router.push('/summary');
   };
 
   const handleIncreaseQuantity = (id) => {
