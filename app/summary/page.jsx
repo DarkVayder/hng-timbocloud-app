@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { assets } from "@/Assets/assets";
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import Footer from '@/Components/Footer';
+import Navbar from '@/Components/Navbar';
 
 const Summary = () => {
   const router = useRouter();
