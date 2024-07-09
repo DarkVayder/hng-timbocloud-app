@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { CiTrash } from "react-icons/ci";
 import Navbar from '@/components/Navbar'; 
-import Footer from '@/Components/Footer';
+import Footer from '@/components/Footer';
 
 const Cart = () => {
   const router = useRouter();
@@ -60,7 +60,7 @@ const Cart = () => {
       <Navbar />
       <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
-        <a href='/' className='text-blue-500 hover:underline'>Home</a> {'>'} <span>Cart</span>
+          <a href='/' className='text-blue-500 hover:underline'>Home</a> {'>'} <span>Cart</span>
         </nav>
         <h1 className='text-3xl font-bold text-white mb-8'>My Cart</h1>
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
