@@ -1,5 +1,3 @@
-'use client';
-
 import { assets } from '@/Assets/assets';
 import Image from 'next/image';
 import React, { useState } from 'react';
@@ -7,7 +5,7 @@ import { RxAvatar } from 'react-icons/rx';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useCart } from '@/Context/CartContext';
 
 const Navbar = () => {
