@@ -24,7 +24,7 @@ const Summary = () => {
   };
 
   const handleConfirmOrder = () => {
-    toast.success('Order confirmed!', {
+    toast.success('Order confirmed!!!', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
