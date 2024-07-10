@@ -6,16 +6,10 @@ import React, { useEffect } from 'react';
 import { RxAvatar } from 'react-icons/rx';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
-import { useCart } from '@/Context/CartContext';
+
 
 const Navbar = () => {
-  const { cartCount } = useCart();
-
-  useEffect(() => {
-    
-  }, []);
-
-
+ 
   return (
     <div className='py-3 px-4 md:px-12 lg:px-28 bg-custom-blue'>
       <div className='relative'>
