@@ -8,13 +8,29 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useCart } from '@/Context/CartContext';
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
+  const { cartCount } = useCart();
 
   useEffect(() => {
-    
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest('.dropdown')) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', handleOutsideClick);
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('click', handleOutsideClick);
+      }
+    };
   }, []);
 
   const toggleDropdown = () => {
@@ -41,18 +57,19 @@ const Navbar = () => {
           className='w-[100px] sm:w-[130px] md:w-auto'
           priority={true}
         />
-        <div className='absolute top-0 right-0'>
+        <div className='absolute top-0 right-0 flex items-center'>
           <Link href='/cart'>
             <div className='relative cursor-pointer p-1 bg-white rounded-full inline-block hover:bg-blue-500 transition-colors duration-300'>
               <MdOutlineShoppingCart className='text-black w-6 h-6 md:w-8 md:h-8 inline-block' />
               <span className='text-black ml-2 text-sm md:text-base inline-block'>Cart</span>
               {cartCount > 0 && (
                 <span className='absolute top-0 right-0 bg-red-600 text-white rounded-full w-5 h-5 md:w-6 md:h-6 inline-block flex items-center justify-center text-xs md:text-sm'>
+                  {cartCount}
                 </span>
               )}
             </div>
           </Link>
-          <div className='relative inline-block'>
+          <div className='relative inline-block dropdown'>
             <RxAvatar className='text-white w-6 h-6 md:w-8 md:h-8 cursor-pointer inline-block' />
             <RiArrowDropDownLine
               className='text-white w-6 h-6 md:w-8 md:h-8 cursor-pointer inline-block'
