@@ -7,9 +7,19 @@ export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-    setCartCount(count);
+    const updateCount = () => {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+      setCartCount(count);
+    };
+
+    updateCount(); 
+
+    window.addEventListener('storage', updateCount);
+
+    return () => {
+      window.removeEventListener('storage', updateCount);
+    };
   }, []);
 
   const updateCartCount = () => {

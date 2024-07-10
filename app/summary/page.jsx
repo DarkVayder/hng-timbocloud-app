@@ -1,12 +1,12 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { assets } from "@/Assets/assets";
 import Footer from '@/Components/Footer';
 import Navbar from '@/Components/Navbar';
+import { assets } from "@/Assets/assets"; // Ensure this path is correct
 
 const Summary = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const Summary = () => {
     if (savedCartItems) {
       setCartItems(JSON.parse(savedCartItems));
     }
-  }, []);
+  }, []); // Empty dependency array ensures useEffect runs only once on component mount
 
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
@@ -52,7 +52,7 @@ const Summary = () => {
             <div className='mb-8'>
               <h2 className='text-2xl text-white font-bold'>Customer Details</h2>
               <h3 className='text-white'>Your Email Address</h3>
-              <input type='email' placeholder='e.g yourname@example.com' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+              <input type='email' placeholder='Enter your email' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
               <h3 className='text-white'>Card Number</h3>
               <input type='text' placeholder='1234 1234 1234 1234' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
@@ -66,26 +66,26 @@ const Summary = () => {
                 </div>
               </div>
               <h3 className='text-white'>Promo Code</h3>
-              <input type='text' placeholder='Your Promo Code' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+              <input type='text' placeholder='Enter promo code' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
             </div>
             <div className='mb-8'>
               <h2 className='text-2xl text-white font-bold'>Billing Address</h2>
               <h3 className='text-white'>Address Line 1</h3>
-              <input type='text' placeholder='Your Address Line 1' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+              <input type='text' placeholder='Enter address line 1' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
               <h3 className='text-white'>Address Line 2</h3>
-              <input type='text' placeholder='Your Address Line 2' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+              <input type='text' placeholder='Enter address line 2' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
                 <div>
                   <h3 className='text-white'>Country</h3>
-                  <input type='text' placeholder='Your Country' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+                  <input type='text' placeholder='Enter country' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
                 </div>
                 <div>
                   <h3 className='text-white'>State</h3>
-                  <input type='text' placeholder='Your State' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+                  <input type='text' placeholder='Enter state' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
                 </div>
               </div>
               <h3 className='text-white'>ZIP Code</h3>
-              <input type='text' placeholder='1234567' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
+              <input type='text' placeholder='Enter ZIP code' className='bg-inherit text-white w-full p-2 rounded-md mb-4 border border-gray-300' />
               <div className='flex items-center'>
                 <input type='checkbox' id='saveDetails' className='mr-2' />
                 <label htmlFor='saveDetails' className='text-white'>Save details for later</label>

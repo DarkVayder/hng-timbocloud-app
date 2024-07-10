@@ -3,14 +3,14 @@
 import { assets, timbu_data } from "@/Assets/assets";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/Components/Footer";
-import Navbar from "@/Components/Navbar";
 import { useEffect, useState } from 'react';
-import { MdOutlineShoppingCart } from 'react-icons/md';
-import { RxAvatar } from 'react-icons/rx';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CiStar } from "react-icons/ci";
+import { MdOutlineShoppingCart } from 'react-icons/md';
+import { RxAvatar } from 'react-icons/rx';
+import Footer from "@/Components/Footer";
+import Navbar from "@/Components/Navbar";
 
 const ItemPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -55,6 +55,7 @@ const ItemPage = ({ params }) => {
   };
 
   const goToCart = () => {
+    // Navigate to cart page
     window.location.href = '/cart';
   };
 
@@ -81,7 +82,7 @@ const ItemPage = ({ params }) => {
       <Navbar />
       <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
-          <a href='/' className='text-blue-500 hover:underline'>Home</a> {'>'} <span>items</span>
+          <Link href='/' className='text-blue-500 hover:underline'>Home</Link> {'>'} <span>items</span>
         </nav>
         <h1 className='text-3xl font-bold text-white mb-8'>Item</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-12'>
@@ -105,11 +106,12 @@ const ItemPage = ({ params }) => {
               >
                 Add to Cart
               </button>
-              <Link href='/cart'>
-                <button className='bg-white text-black px-4 py-2 rounded-full cursor-pointer hover:bg-gray-200 transition duration-300'>
-                  Buy Now
-                </button>
-              </Link>
+              <button 
+                className='bg-white text-black px-4 py-2 rounded-full cursor-pointer hover:bg-gray-200 transition duration-300'
+                onClick={goToCart}
+              >
+                Buy Now
+              </button>
             </div>
             <div className='flex flex-col text-white'>
               <h1 className='mb-4 text-2xl font-semibold'>Ratings and Reviews</h1>

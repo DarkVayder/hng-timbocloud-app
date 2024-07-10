@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import { CiTrash } from "react-icons/ci";
+import { CiTrash } from 'react-icons/ci';
 import Footer from '@/Components/Footer';
 import Navbar from '@/Components/Navbar';
 
@@ -19,28 +19,26 @@ const Cart = () => {
   }, []);
 
   const handleRemoveItem = (id) => {
-    const updatedCartItems = cartItems.filter(item => item.id !== id);
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    const updatedCartItems = cartItems.filter((item) => item.id !== id);
+    updateCartItems(updatedCartItems);
     toast.success('Item removed from cart!');
   };
 
-  const handleCheckout = () => {
-    router.push('/summary');
-  };
-
   const handleIncreaseQuantity = (id) => {
-    const updatedCartItems = cartItems.map(item =>
+    const updatedCartItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    updateCartItems(updatedCartItems);
   };
 
   const handleDecreaseQuantity = (id) => {
-    const updatedCartItems = cartItems.map(item =>
+    const updatedCartItems = cartItems.map((item) =>
       item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
     );
+    updateCartItems(updatedCartItems);
+  };
+
+  const updateCartItems = (updatedCartItems) => {
     setCartItems(updatedCartItems);
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
@@ -51,8 +49,12 @@ const Cart = () => {
 
   const calculateTotal = () => {
     const subtotal = calculateSubtotal();
-    const tax = (subtotal * 0.07).toFixed(2); 
+    const tax = (subtotal * 0.07).toFixed(2);
     return (parseFloat(subtotal) + parseFloat(tax)).toFixed(2);
+  };
+
+  const handleCheckout = () => {
+    router.push('/summary');
   };
 
   return (
@@ -60,7 +62,10 @@ const Cart = () => {
       <Navbar />
       <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
-          <a href='/' className='text-blue-500 hover:underline'>Home</a> {'>'} <span>Cart</span>
+          <a href='/' className='text-blue-500 hover:underline'>
+            Home
+          </a>{' '}
+          {'>'} <span>Cart</span>
         </nav>
         <h1 className='text-3xl font-bold text-white mb-8'>My Cart</h1>
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
@@ -68,30 +73,30 @@ const Cart = () => {
             {cartItems.length === 0 ? (
               <p className='text-white'>Your cart is empty.</p>
             ) : (
-              cartItems.map(item => (
+              cartItems.map((item) => (
                 <div key={item.id} className='flex items-center mb-4 bg-gray-700 p-4 rounded-lg'>
                   <Image src={item.image} alt={item.title} width={100} height={100} className='rounded-lg' />
                   <div className='ml-4 flex-grow'>
                     <h2 className='text-lg text-white font-bold'>{item.title}</h2>
                     <p className='text-white'>${item.price} x {item.quantity}</p>
                     <div className='flex items-center mt-2'>
-                      <button 
-                        onClick={() => handleDecreaseQuantity(item.id)} 
+                      <button
+                        onClick={() => handleDecreaseQuantity(item.id)}
                         className='px-2 py-1 bg-gray-500 text-white rounded-lg cursor-pointer hover:bg-gray-400 transition duration-300'
                       >
                         -
                       </button>
                       <span className='px-4 text-white'>{item.quantity}</span>
-                      <button 
-                        onClick={() => handleIncreaseQuantity(item.id)} 
+                      <button
+                        onClick={() => handleIncreaseQuantity(item.id)}
                         className='px-2 py-1 bg-gray-500 text-white rounded-lg cursor-pointer hover:bg-gray-400 transition duration-300'
                       >
                         +
                       </button>
                     </div>
                   </div>
-                  <button 
-                    onClick={() => handleRemoveItem(item.id)} 
+                  <button
+                    onClick={() => handleRemoveItem(item.id)}
                     className='p-2 text-red-600 hover:text-red-500 transition duration-300'
                   >
                     <CiTrash size={24} />
@@ -107,8 +112,8 @@ const Cart = () => {
             <p className='mb-2'>Tax: ${(calculateSubtotal() * 0.07).toFixed(2)}</p>
             <hr className='my-4' />
             <p className='text-lg font-bold'>Total: ${calculateTotal()}</p>
-            <button 
-              onClick={handleCheckout} 
+            <button
+              onClick={handleCheckout}
               className='w-full mt-4 bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300'
             >
               Checkout
