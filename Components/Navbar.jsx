@@ -7,7 +7,7 @@ import { RxAvatar } from 'react-icons/rx';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useCart } from '@/Context/CartContext';
 
 const Navbar = () => {

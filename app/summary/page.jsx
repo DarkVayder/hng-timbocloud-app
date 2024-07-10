@@ -1,12 +1,12 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '@/Components/Footer';
 import Navbar from '@/Components/Navbar';
-import { assets } from "@/Assets/assets"; // Ensure this path is correct
+import { assets } from "@/Assets/assets";
 
 const Summary = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const Summary = () => {
     if (savedCartItems) {
       setCartItems(JSON.parse(savedCartItems));
     }
-  }, []); // Empty dependency array ensures useEffect runs only once on component mount
+  }, []); 
 
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
