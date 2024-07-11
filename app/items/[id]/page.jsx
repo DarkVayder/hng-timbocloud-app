@@ -55,7 +55,6 @@ const ItemPage = ({ params }) => {
   };
 
   const goToCart = () => {
-    // Navigate to cart page
     window.location.href = '/cart';
   };
 
@@ -87,14 +86,29 @@ const ItemPage = ({ params }) => {
         <h1 className='text-3xl font-bold text-white mb-8'>Item</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-12'>
           <div className='relative'>
-            <Image className='border-4 border-gray-200' src={data.image} width={500} height={250} alt={data.title} />
+            <Image
+              className='border-4 border-gray-200'
+              src={data.image}
+              width={500}
+              height={250}
+              alt={data.title}
+              style={{ width: '100%', height: 'auto' }} 
+              priority 
+            />
           </div>
           <div className='text-center md:text-left'>
             <h1 className='text-3xl sm:text-5xl font-bold text-white mb-4 sm:mb-8 drop-shadow-lg leading-tight'>
               {data.title}
             </h1>
             <div className='flex items-center mb-4'>
-              <Image src={assets.HNGlogo} width={20} height={10} alt='HNG Shop Logo' className='mr-2' />
+              <Image
+                src={assets.HNGlogo}
+                width={20}
+                height={10}
+                alt='HNG Shop Logo'
+                className='mr-2'
+                style={{ width: 'auto', height: 'auto' }} 
+              />
               <p className='text-white text-sm'>HNG Shop</p>
             </div>
             <p className='text-base text-white mb-4'>{data.description}</p>
