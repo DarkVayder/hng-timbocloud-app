@@ -6,7 +6,13 @@ const Header = () => {
   return (
     <div className='relative bg-custom-blue'>
       <div className='relative'>
-        <Image src={assets.cover} layout='responsive' objectFit='cover' alt='Cover Image' />
+        <Image 
+          src={assets.cover} 
+          width={1920} 
+          height={1080} 
+          alt='Cover Image'
+          style={{ objectFit: 'cover' }} 
+        />
         <div className='absolute left-9 bottom-[-70px]'>
           <Image
             src={assets.HNGlogo}
