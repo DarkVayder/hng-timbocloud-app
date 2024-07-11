@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['localhost'],
-    },
-  };
-  
-  module.exports = nextConfig;
-  
+  images: {
+    domains: ['localhost'],
+  },
+};
+
+export default nextConfig;

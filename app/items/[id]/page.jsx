@@ -3,7 +3,7 @@
 import { assets, timbu_data } from "@/Assets/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CiStar } from "react-icons/ci";
@@ -18,19 +18,19 @@ const ItemPage = ({ params }) => {
   const [showReviewField, setShowReviewField] = useState(false);
   const [reviewText, setReviewText] = useState("");
 
+  const fetchItemData = useCallback(() => {
+    const item = timbu_data.find(item => Number(params.id) === item.id);
+    if (item) {
+      setData(item);
+    }
+  }, [params.id]);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       fetchItemData();
       loadCartItems();
     }
-  }, [params.id]);
-
-  const fetchItemData = () => {
-    const item = timbu_data.find(item => Number(params.id) === item.id);
-    if (item) {
-      setData(item);
-    }
-  };
+  }, [params.id, fetchItemData]);
 
   const loadCartItems = () => {
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];

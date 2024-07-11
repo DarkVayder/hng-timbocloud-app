@@ -57,7 +57,7 @@ const Navbar = () => {
           className='w-[100px] sm:w-[130px] md:w-auto'
           priority={true}
         />
-        <div className='absolute top-0 right-0 flex items-center'>
+        <div className='absolute top-0 right-0 flex items-end'>
           <Link href='/cart'>
             <div className='relative cursor-pointer p-1 bg-white rounded-full inline-block hover:bg-blue-500 transition-colors duration-300'>
               <MdOutlineShoppingCart className='text-black w-6 h-6 md:w-8 md:h-8 inline-block' />

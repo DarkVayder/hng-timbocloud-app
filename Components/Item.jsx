@@ -1,6 +1,8 @@
 'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { FaOpencart } from "react-icons/fa"; 
 import { assets } from '@/Assets/assets';
@@ -25,10 +27,14 @@ const Item = ({ id, title, image, price }) => {
     <div className='max-w-full sm:max-w-[330px] bg-inherit border border-black hover:shadow-[-7px_7px_0px_#000000] rounded-lg overflow-hidden'>
       <Link href={`/items/${id}`} passHref>
         <div className='relative cursor-pointer'>
-          <img 
+          <Image 
             src={image} 
             alt={title} 
             className='border-b border-black rounded-t-lg w-full h-[400px] object-cover'
+            layout='responsive'
+            width={330}
+            height={400}
+            priority 
           />
           <div className='absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-t-lg'>
             <p className='text-white text-lg font-bold'>View</p>
