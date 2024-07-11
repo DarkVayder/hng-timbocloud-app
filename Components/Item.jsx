@@ -25,8 +25,16 @@ const Item = ({ id, title, image, price }) => {
   return (
     <div className='max-w-full sm:max-w-[330px] bg-inherit border border-black hover:shadow-[-7px_7px_0px_#000000] rounded-lg overflow-hidden'>
       <Link href={`/items/${id}`} passHref>
-        <div className='relative cursor-pointer'>
-          <Image src={image} alt={title} layout='responsive' width={400} height={400} className='border-b border-black rounded-t-lg' />
+        <div className='relative cursor-pointer' style={{ height: '400px' }}> 
+          <Image 
+            src={image} 
+            alt={title} 
+            layout='fill' 
+            objectFit='cover'
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className='border-b border-black rounded-t-lg' 
+            priority 
+          />
           <div className='absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-t-lg'>
             <p className='text-white text-lg font-bold'>View</p>
           </div>

@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { assets } from '@/Assets/assets';
-import { FaYoutube, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { FaRegCopyright } from 'react-icons/fa';
+import { FaYoutube, FaInstagram, FaTwitter, FaRegCopyright } from 'react-icons/fa';
 
 const Footer = () => {
   return (
