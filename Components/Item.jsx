@@ -31,9 +31,7 @@ const Item = ({ id, title, image, price }) => {
             src={image} 
             alt={title} 
             className='border-b border-black rounded-t-lg w-full h-[400px] object-cover'
-            layout='responsive'
-            width={330}
-            height={400}
+            style={{ aspectRatio: '330 / 400' }}
             priority 
           />
           <div className='absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-t-lg'>
