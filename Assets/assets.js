@@ -71,18 +71,4 @@ export const timbu_data = [
         description:'Make or break',
         image: assets.item2
     },
-    {
-        id: 7,
-        title: '7 rules of life Vol 2',
-        price: 19.99,
-        description:'Known facts yet unspoken by many',
-        image: assets.item
-    },
-    {
-        id: 8,
-        title: '7 rules of life Vol 8',
-        price: 2.99,
-        description:'Go Hard or Go Home',
-        image: assets.item6
-    },
 ];
