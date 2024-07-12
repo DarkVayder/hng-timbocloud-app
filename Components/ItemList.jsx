@@ -19,7 +19,6 @@ const ItemList = () => {
     setCartCount(count);
   };
 
-
   return (
     <div className='bg-custom-blue'>
       <ToastContainer />
@@ -28,14 +27,14 @@ const ItemList = () => {
           Explore Our Wide Range of Books
         </h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
-          {itemsToShow.map((item) => (
+          {timbu_data.map((item) => (
             <Item
               key={item.id}
               id={item.id}
               title={item.title}
               price={item.price}
               image={item.image}
-              updateCartCount={updateCartCount} 
+              updateCartCount={updateCartCount}
             />
           ))}
         </div>
