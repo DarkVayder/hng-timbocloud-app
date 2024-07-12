@@ -6,7 +6,6 @@ import Item from './Item';
 import { ToastContainer } from 'react-toastify';
 
 const ItemList = () => {
-  const [showMore, setShowMore] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [cartCount, setCartCount] = useState(0);
 
@@ -20,7 +19,6 @@ const ItemList = () => {
     setCartCount(count);
   };
 
-  const itemsToShow = isMobile ? (showMore ? timbu_data : timbu_data.slice(0, 4)) : timbu_data;
 
   return (
     <div className='bg-custom-blue'>
@@ -29,7 +27,7 @@ const ItemList = () => {
         <h1 className='text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-8 drop-shadow-md text-left'>
           Explore Our Wide Range of Books
         </h1>
-        <div className='grid grid-cols-2 sm:grid-cols-4 gap-6'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
           {itemsToShow.map((item) => (
             <Item
               key={item.id}
@@ -41,16 +39,6 @@ const ItemList = () => {
             />
           ))}
         </div>
-        {isMobile && timbu_data.length > 4 && (
-          <div className='flex justify-center mt-8'>
-            <button
-              onClick={() => setShowMore(!showMore)}
-              className='px-4 py-2 bg-white text-black font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300'
-            >
-              {showMore ? 'See Less' : 'See More'}
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
