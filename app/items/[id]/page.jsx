@@ -9,8 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CiStar } from "react-icons/ci";
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { RxAvatar } from 'react-icons/rx';
-import Footer from "@/Components/Footer";
-import Navbar from "@/Components/Navbar";
 
 const ItemPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -78,7 +76,6 @@ const ItemPage = ({ params }) => {
 
   return (
     <div className='bg-custom-blue min-h-screen flex flex-col'>
-      <Navbar />
       <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
           <Link href='/' className='text-blue-500 hover:underline'>Home</Link> {'>'} <span>items</span>
@@ -180,7 +177,6 @@ const ItemPage = ({ params }) => {
           </div>
         </div>
       </div>
-      <Footer className='self-end' />
       <ToastContainer />
     </div>
   );

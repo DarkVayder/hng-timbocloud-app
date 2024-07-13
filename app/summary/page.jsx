@@ -4,8 +4,6 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from '@/Components/Footer';
-import Navbar from '@/Components/Navbar';
 import { assets } from "@/Assets/assets";
 
 const Summary = () => {
@@ -40,7 +38,6 @@ const Summary = () => {
 
   return (
     <div className='bg-custom-blue min-h-screen flex flex-col'>
-      <Navbar />
       <ToastContainer />
       <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
@@ -127,7 +124,6 @@ const Summary = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

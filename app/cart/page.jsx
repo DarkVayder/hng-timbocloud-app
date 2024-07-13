@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { CiTrash } from 'react-icons/ci';
-import Footer from '@/Components/Footer';
-import Navbar from '@/Components/Navbar';
 
 const Cart = () => {
   const router = useRouter();
@@ -59,8 +57,7 @@ const Cart = () => {
 
   return (
     <div className='bg-custom-blue min-h-screen flex flex-col'>
-      <Navbar />
-      <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
+        <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
           <a href='/' className='text-blue-500 hover:underline'>
             Home
@@ -121,7 +118,6 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

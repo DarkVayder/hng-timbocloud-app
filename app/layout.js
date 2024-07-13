@@ -3,6 +3,8 @@ import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "@/Context/CartContext";
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 
 const trispace = Trispace({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
@@ -17,7 +19,9 @@ export default function RootLayout({ children }) {
       <body className={trispace.className}>
         <CartProvider>
           <ToastContainer />
+          <Navbar />
           {children}
+          <Footer />
         </CartProvider>
       </body>
     </html>
