@@ -63,7 +63,7 @@ const Navbar = () => {
               <MdOutlineShoppingCart className='text-black w-6 h-6 md:w-8 md:h-8 inline-block' />
               <span className='text-black ml-2 text-sm md:text-base inline-block'>Cart</span>
               {cartCount > 0 && (
-                <span className='absolute top-0 right-0 bg-red-600 text-white rounded-full w-5 h-5 md:w-6 md:h-6 inline-block flex items-center justify-center text-xs md:text-sm'>
+                <span className='absolute top-0 right-0 bg-red-600 text-white rounded-full w-5 h-5 md:w-6 md:h-6 inline-block items-center justify-center text-xs md:text-sm'>
                   {cartCount}
                 </span>
               )}
