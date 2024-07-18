@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
@@ -16,40 +16,40 @@ const Cart = () => {
     }
   }, []);
 
-  const handleRemoveItem = (id) => {
+  const updateCartItems = useCallback((updatedCartItems) => {
+    setCartItems(updatedCartItems);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+  }, []);
+
+  const handleRemoveItem = useCallback((id) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== id);
     updateCartItems(updatedCartItems);
     toast.success('Item removed from cart!');
-  };
+  }, [cartItems, updateCartItems]);
 
-  const handleIncreaseQuantity = (id) => {
+  const handleIncreaseQuantity = useCallback((id) => {
     const updatedCartItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     updateCartItems(updatedCartItems);
-  };
+  }, [cartItems, updateCartItems]);
 
-  const handleDecreaseQuantity = (id) => {
+  const handleDecreaseQuantity = useCallback((id) => {
     const updatedCartItems = cartItems.map((item) =>
       item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
     );
     updateCartItems(updatedCartItems);
-  };
+  }, [cartItems, updateCartItems]);
 
-  const updateCartItems = (updatedCartItems) => {
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-  };
-
-  const calculateSubtotal = () => {
+  const calculateSubtotal = useCallback(() => {
     return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
-  };
+  }, [cartItems]);
 
-  const calculateTotal = () => {
-    const subtotal = calculateSubtotal();
+  const calculateTotal = useCallback(() => {
+    const subtotal = parseFloat(calculateSubtotal());
     const tax = (subtotal * 0.07).toFixed(2);
-    return (parseFloat(subtotal) + parseFloat(tax)).toFixed(2);
-  };
+    return (subtotal + parseFloat(tax)).toFixed(2);
+  }, [calculateSubtotal]);
 
   const handleCheckout = () => {
     router.push('/summary');
@@ -57,7 +57,7 @@ const Cart = () => {
 
   return (
     <div className='bg-custom-blue min-h-screen flex flex-col'>
-        <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
+      <div className='container mx-auto py-5 px-5 md:px-12 lg:px-28 flex-grow'>
         <nav className='text-white mb-4'>
           <a href='/' className='text-blue-500 hover:underline'>
             Home

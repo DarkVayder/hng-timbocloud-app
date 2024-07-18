@@ -30,10 +30,15 @@ const ItemPage = ({ params }) => {
     }
   }, [params.id, fetchItemData]);
 
-  const loadCartItems = () => {
+  const loadCartItems = useCallback(() => {
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     setCartItems(savedCartItems);
-  };
+  }, []);
+
+  const updateCartItems = useCallback((updatedCartItems) => {
+    setCartItems(updatedCartItems);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+  }, []);
 
   const addToCart = () => {
     const existingItem = cartItems.find(item => item.id === data.id);
@@ -47,8 +52,7 @@ const ItemPage = ({ params }) => {
       updatedCartItems = [...cartItems, { ...data, quantity: 1 }];
     }
 
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    updateCartItems(updatedCartItems);
     toast.success(`${data.title} added to cart!`);
   };
 

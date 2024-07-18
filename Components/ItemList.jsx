@@ -1,6 +1,6 @@
 'use client';
 import { timbu_data } from '@/Assets/assets';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Item from './Item';
 import { ToastContainer } from 'react-toastify';
@@ -9,15 +9,15 @@ const ItemList = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [cartCount, setCartCount] = useState(0);
 
-  useEffect(() => {
-    updateCartCount();
-  }, []);
-
-  const updateCartCount = () => {
+  const updateCartCount = useCallback(() => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const count = cartItems.reduce((acc, item) => acc + item.quantity, 0);
     setCartCount(count);
-  };
+  }, []);
+
+  useEffect(() => {
+    updateCartCount();
+  }, [updateCartCount]);
 
   return (
     <div className='bg-custom-blue'>
